@@ -1,0 +1,7 @@
+<c-button 
+        class="btn input-group-btn { props.class } { props.dropdown ? 'dropdown-toggle' : '' }"    
+        data-badge={ props.badge }
+        tabindex={ props.dropdown ? "0" : '' }
+    >
+    <slot></slot>
+</c-button>

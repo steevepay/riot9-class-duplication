@@ -1,0 +1,17 @@
+{
+  "name": "riot9-class-duplication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@riot-tools/meiosis": "^3.0.2",
+    "riot": "^9.1.2",
+    "rollup-plugin-riot": "^9.0.2",
+    "vite": "^5.0.12"
+  }
+}

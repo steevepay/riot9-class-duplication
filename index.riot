@@ -1,0 +1,25 @@
+<app>
+    <c-button dropdown="true" class="tooltip tooltip-top"> 
+        Button loading: {state.loading}
+    </c-button>
+    <script>
+    
+    import store from './store.js'
+    import cButton from './c-button.riot';
+
+    const _component = {
+      onMounted() {
+        const _state = store.stream.state();
+        store.dispatch({ loading: true })
+      },
+      components : {
+        cButton
+      }
+    }
+    const mapToState = (appState, ownState) => {
+      console.log(appState, ownState)
+      return { ...ownState, ...appState }
+    };
+    export default store.connect(mapToState)(_component);
+    </script>
+</app>
