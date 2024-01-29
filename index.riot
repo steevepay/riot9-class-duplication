@@ -17,7 +17,6 @@
       }
     }
     const mapToState = (appState, ownState) => {
-      console.log(appState, ownState)
       return { ...ownState, ...appState }
     };
     export default store.connect(mapToState)(_component);
