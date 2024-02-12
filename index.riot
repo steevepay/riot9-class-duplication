@@ -1,11 +1,11 @@
 <app>
-    <c-button dropdown="true" class="tooltip tooltip-top"> 
-        Button loading: {state.loading}
-    </c-button>
+    <c-layout class="large">
+      { state.loading }
+    </c-layout>
     <script>
     
-    import store from './store.js'
-    import cButton from './c-button.riot';
+    import store from "./store.js"
+    import cLayout from './c-layout.riot';
 
     const _component = {
       onMounted() {
@@ -13,7 +13,7 @@
         store.dispatch({ loading: true })
       },
       components : {
-        cButton
+        cLayout
       }
     }
     const mapToState = (appState, ownState) => {

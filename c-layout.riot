@@ -1,0 +1,13 @@
+<c-layout class="{props.class} layout">
+    props.class not accessible / not printing: {props.class}<br>
+    Expected Class of c-layout: "large layout"<br>
+    <slot>
+    <script>
+        export default {
+            onMounted(props) {
+                /** The props.class is accessible and printing here: **/
+                console.log(props.class)
+            }
+        }
+    </script>
+</c-layout>
