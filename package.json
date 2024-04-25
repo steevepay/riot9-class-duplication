@@ -1,5 +1,5 @@
 {
-  "name": "riot9-class-duplication",
+  "name": "riot9-issue",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@riot-tools/meiosis": "^4.0.0",
+    "@riotjs/route": "^9.2.0",
     "riot": "^9.1.5",
     "rollup-plugin-riot": "^9.0.2",
     "vite": "^5.2.10"

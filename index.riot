@@ -1,24 +1,54 @@
 <app>
-    <c-layout class="large" style="font-family: Verdana;">
-      { state.loading }
-    </c-layout>
+    <span>
+        <router base="/">
+          <nav>
+            <a style="padding-right:20px" each={ page in state.pages } href={ page.href }>{ page.name }</a>
+          </nav>
+          <route each={ page in state.pages } path={ page.path }>
+            <span is={ page.component }></span>
+          </route>
+          <span if={ state.showNotFound }>
+            <h2> 404 Page not found </h2>
+          </span>
+        </router>
+    </span>
     <script>
-    
-    import store from "./store.js"
-    import cLayout from './c-layout.riot';
+      import { Router, Route, route, toRegexp, match } from '@riotjs/route';
 
-    const _component = {
-      onMounted() {
-        const _state = store.stream.state();
-        store.dispatch({ loading: true })
-      },
-      components : {
-        cLayout
+      import pHome from "./p-home.riot";
+      import pAccount from "./p-account.riot";
+      
+      export default {
+        components : { Router, Route, pAccount, pHome },
+        state : {
+            showNotFound: false,
+            pages: [
+              {
+                name     : 'Home',
+                href     : '/',
+                path     : '/(/?[?#].*)?(#.*)?',
+                component: 'p-home'
+              },
+              {
+                name     : 'Account',
+                href     : '/',
+                path     : '/account(/?[?#].*)?(#.*)?',
+                component: 'p-account'
+              },
+            ]
+        },
+        onMounted() {
+            // ROUTING: create a stream on all routes
+            this.anyRouteStream = route('(.*)')
+            // ROUTING: check any route change to understand if the not found site should be displayed
+            this.anyRouteStream.on.value(this.onPageChange)
+        },
+        onUnmounted() {
+            this.anyRouteStream.end()
+        },
+        onPageChange(path) {
+            this.update({ showNotFound: !this.state.pages.some(p => match(path.pathname, toRegexp(p?.path))) })  
+        }
       }
-    }
-    const mapToState = (appState, ownState) => {
-      return { ...ownState, ...appState }
-    };
-    export default store.connect(mapToState)(_component);
     </script>
 </app>
