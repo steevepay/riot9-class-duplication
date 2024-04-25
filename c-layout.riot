@@ -1,7 +1,7 @@
 <c-layout class="{props.class} layout" style="color:#0d00a4;{props.style}">
     props.class not accessible, should print "large": "{props.class}"<br>Expected Class of c-layout: "large layout"<br><br>
     props.style not accessible, should print "font-family: Verdana;": "{props.style}"<br>Expected Style of c-layout: "color:#0d00a4;font-family: Verdana;"<br><br>
-    Updated: <slot>
+    Updated: <slot></slot>
     <script>
         export default {
             onMounted(props) {
